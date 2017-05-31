@@ -1,0 +1,56 @@
+.App {
+}
+
+.App__header {
+  align-items: center;
+  background: #FF9A58;
+  color: #FFFFFF;
+  display: flex;
+  height: 50px;
+  justify-content: center;
+}
+
+.App__body {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 50px;
+}
+
+table {
+  border-collapse: collapse;
+  height: 100%;
+  table-layout: fixed;
+  width: 100%;
+}
+
+td, th {
+  padding: 0.5rem;
+  text-align: left;
+}
+
+tr:first-child {
+  height: 1rem;
+}
+
+tr + tr {
+  border-top: 1px solid #FFC29A;
+}
+
+* + td, * + th {
+  border-left: 1px solid #FFC29A;
+}
+
+th {
+  background: #FFF8F3;
+}
+
+th:first-child {
+  text-align: right;
+  width: 100px;
+}
+
+td {
+  vertical-align: top;
+}
