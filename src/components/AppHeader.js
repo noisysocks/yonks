@@ -10,18 +10,22 @@ const Header = styled.header`
   color: ${HEADER_TEXT};
   display: flex;
   height: ${APP_HEADER_HEIGHT};
-  justify-content: center;
+  justify-content: space-between;
   left: 0;
+  padding: 10px 10%;
   position: fixed;
   right: 0;
   top: 0;
   z-index: ${MIDDLE};
 `;
 
-function AppHeader() {
+function AppHeader({ children }) {
   return (
     <Header>
       <h1>Yonks</h1>
+      <div>
+        {children}
+      </div>
     </Header>
   );
 }

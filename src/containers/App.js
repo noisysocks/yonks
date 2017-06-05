@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import moment from 'moment'
 import AppHeader from '../components/AppHeader';
+import AppHeaderButton from '../components/AppHeaderButton';
 import PlannerTable from '../components/PlannerTable';
 import PlannerRow from '../components/PlannerRow';
 import PlannerCell from '../components/PlannerCell';
@@ -28,7 +29,10 @@ class App extends Component {
   render() {
     return (
       <div>
-        <AppHeader />
+        <AppHeader>
+          <AppHeaderButton href="#about" icon="question" />
+          <AppHeaderButton href="#add-event" icon="plus" />
+        </AppHeader>
         <PlannerTable columns={this.state.providers}>
           {this.state.days.map(day => (
             <PlannerRow key={day} title={day.format('ddd D')}>
