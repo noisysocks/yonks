@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-import moment from 'moment'
+import moment from 'moment';
 import AppHeader from '../components/AppHeader';
 import AppHeaderButton from '../components/AppHeaderButton';
 import PlannerTable from '../components/PlannerTable';
@@ -21,9 +21,10 @@ class App extends Component {
   }
 
   findPosts(provider, day) {
-    return _.filter(sampleData.posts, post => (
-      post.provider === provider && moment(post.date).isSame(day, 'day')
-    ));
+    return _.filter(
+      sampleData.posts,
+      post => post.provider === provider && moment(post.date).isSame(day, 'day')
+    );
   }
 
   render() {
@@ -34,19 +35,19 @@ class App extends Component {
           <AppHeaderButton href="#add-event" icon="plus" />
         </AppHeader>
         <PlannerTable columns={this.state.providers}>
-          {this.state.days.map(day => (
+          {this.state.days.map(day =>
             <PlannerRow key={day} title={day.format('ddd D')}>
-              {this.state.providers.map(provider => (
+              {this.state.providers.map(provider =>
                 <PlannerCell key={provider}>
                   <ul>
-                    {this.findPosts(provider, day).map(post => (
+                    {this.findPosts(provider, day).map(post =>
                       <li key={post.title}>{post.title}</li>
-                    ))}
+                    )}
                   </ul>
                 </PlannerCell>
-              ))}
+              )}
             </PlannerRow>
-          ))}
+          )}
         </PlannerTable>
       </div>
     );
