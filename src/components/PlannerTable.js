@@ -48,7 +48,7 @@ function PlannerTable({ columns, children }) {
       <thead>
         <HeaderRow>
           <HeaderCell />
-          {columns.map(column => <HeaderCell><b>{column}</b></HeaderCell>)}
+          {columns.map((column, key) => <HeaderCell key={key}><b>{column}</b></HeaderCell>)}
         </HeaderRow>
       </thead>
       <tbody>
