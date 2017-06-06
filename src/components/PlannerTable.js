@@ -10,6 +10,7 @@ const Table = styled.table`
   table-layout: fixed;
 
   & td, & th {
+    max-width: calc((100vw - 100px) / ${props => props.numColumns});
     min-width: calc((100vw - 100px) / ${props => props.numColumns});
   }
 

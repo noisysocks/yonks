@@ -34,23 +34,27 @@ class App extends Component {
           <AppHeaderButton href="#about" icon="question" />
           <AppHeaderButton href="#add-event" icon="plus" />
         </AppHeader>
+
         <PlannerTable columns={this.state.providers}>
           {this.state.days.map(day =>
             <PlannerRow key={day} title={day.format('ddd D')}>
               {this.state.providers.map(provider =>
-                <PlannerCell key={provider}>
-                  <ul>
-                    {this.findPosts(provider, day).map(post =>
-                      <li key={post.title}>{post.title}</li>
-                    )}
-                  </ul>
-                </PlannerCell>
+                <PlannerCell
+                  key={provider}
+                  posts={this.findPosts(provider, day)}
+                  onPostSelect={this.handlePostSelect}
+                />
               )}
             </PlannerRow>
           )}
         </PlannerTable>
       </div>
     );
+  }
+
+  handlePostSelect(e, post) {
+    e.preventDefault();
+    console.log(post);
   }
 }
 
