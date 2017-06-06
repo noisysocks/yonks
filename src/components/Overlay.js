@@ -20,7 +20,6 @@ const Sheet = styled.div`
   height: 80%;
   max-height: 500px;
   max-width: 500px;
-  padding: 10px;
   width: 80%;
 `;
 

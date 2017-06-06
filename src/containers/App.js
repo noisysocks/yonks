@@ -8,6 +8,7 @@ import PlannerTable from '../components/PlannerTable';
 import PlannerRow from '../components/PlannerRow';
 import PlannerCell from '../components/PlannerCell';
 import Overlay from '../components/Overlay';
+import AboutText from '../components/AboutText';
 
 class App extends Component {
   constructor(props) {
@@ -68,8 +69,7 @@ class App extends Component {
 
   handleAboutClick(e) {
     e.preventDefault();
-    // @todo
-    this.setState({ overlayedComponent: <div /> });
+    this.setState({ overlayedComponent: <AboutText /> });
   }
 
   handleAddPostClick(e) {
