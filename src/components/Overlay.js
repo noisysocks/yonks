@@ -17,10 +17,13 @@ const Container = styled.div`
 
 const Sheet = styled.div`
   background: #FFFFFF;
-  height: 80%;
   max-height: 500px;
   max-width: 500px;
   width: 80%;
+
+  & > * {
+    margin: 1.2rem;
+  }
 `;
 
 function Overlay({ onDismiss, children }) {

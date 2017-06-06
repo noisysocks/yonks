@@ -8,3 +8,7 @@ export const HEADER_TEXT = WHITE;
 
 export const PLANNER_BACKGROUND = WHITE;
 export const PLANNER_BORDER = PEACH_ORANGE;
+
+export const FORM_BORDER = PEACH_ORANGE;
+export const BUTTON_BACKGROUND = ATOMIC_TANGERINE;
+export const BUTTON_TEXT = WHITE;
