@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
+import _, { range, filter } from 'lodash';
 import moment from 'moment';
+import sampleData from '../sampleData';
 import AppHeader from '../components/AppHeader';
 import AppHeaderButton from '../components/AppHeaderButton';
 import PlannerTable from '../components/PlannerTable';
 import PlannerRow from '../components/PlannerRow';
 import PlannerCell from '../components/PlannerCell';
-import sampleData from '../sampleData';
+import Overlay from '../components/Overlay';
 
 class App extends Component {
   constructor(props) {
@@ -16,12 +17,12 @@ class App extends Component {
 
   componentDidMount() {
     const providers = _(sampleData.posts).map('provider').uniq().value();
-    const days = _.range(15).map(n => moment().add(n, 'days'));
+    const days = range(15).map(n => moment().add(n, 'days'));
     this.setState({ providers, days });
   }
 
   findPosts(provider, day) {
-    return _.filter(
+    return filter(
       sampleData.posts,
       post => post.provider === provider && moment(post.date).isSame(day, 'day')
     );
@@ -31,8 +32,16 @@ class App extends Component {
     return (
       <div>
         <AppHeader>
-          <AppHeaderButton href="#about" icon="question" />
-          <AppHeaderButton href="#add-event" icon="plus" />
+          <AppHeaderButton
+            href="#about"
+            onClick={this.handleAboutClick.bind(this)}
+            icon="question"
+          />
+          <AppHeaderButton
+            href="#add-post"
+            onClick={this.handleAddPostClick.bind(this)}
+            icon="plus"
+          />
         </AppHeader>
 
         <PlannerTable columns={this.state.providers}>
@@ -42,19 +51,41 @@ class App extends Component {
                 <PlannerCell
                   key={provider}
                   posts={this.findPosts(provider, day)}
-                  onPostSelect={this.handlePostSelect}
+                  onPostSelect={this.handlePostSelect.bind(this)}
                 />
               )}
             </PlannerRow>
           )}
         </PlannerTable>
+
+        {this.state.overlayedComponent &&
+          <Overlay onDismiss={this.handleOverlayDismiss.bind(this)}>
+            {this.state.overlayedComponent}
+          </Overlay>}
       </div>
     );
   }
 
+  handleAboutClick(e) {
+    e.preventDefault();
+    // @todo
+    this.setState({ overlayedComponent: <div /> });
+  }
+
+  handleAddPostClick(e) {
+    e.preventDefault();
+    // @todo
+    this.setState({ overlayedComponent: <div /> });
+  }
+
   handlePostSelect(e, post) {
     e.preventDefault();
-    console.log(post);
+    // @todo
+    this.setState({ overlayedComponent: <div /> });
+  }
+
+  handleOverlayDismiss() {
+    this.setState({ overlayedComponent: null });
   }
 }
 
