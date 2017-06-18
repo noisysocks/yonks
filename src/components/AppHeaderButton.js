@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { HEADER_TEXT } from './colors';
+import { HEADER_TEXT } from '../constants/colors';
 
 const Link = styled.a`
   color: ${HEADER_TEXT};

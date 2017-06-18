@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { HEADER_BACKGROUND, HEADER_TEXT } from './colors';
-import { APP_HEADER_HEIGHT } from './sizes';
-import { MIDDLE } from './depths';
+import { HEADER_BACKGROUND, HEADER_TEXT } from '../constants/colors';
+import { APP_HEADER_HEIGHT } from '../constants/sizes';
+import { MIDDLE } from '../constants/depths';
 
 const Header = styled.header`
   align-items: center;

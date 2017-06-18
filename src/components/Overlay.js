@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { TOP } from './depths';
+import { TOP } from '../constants/depths';
 
 const Container = styled.div`
   align-items: center;

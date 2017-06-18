@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { BUTTON_BACKGROUND, BUTTON_TEXT } from './colors';
+import { BUTTON_BACKGROUND, BUTTON_TEXT } from '../constants/colors';
 
 export default styled.button`
   background: ${BUTTON_BACKGROUND};

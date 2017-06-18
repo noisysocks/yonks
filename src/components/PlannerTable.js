@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PLANNER_BACKGROUND, PLANNER_BORDER } from './colors';
-import { APP_HEADER_HEIGHT, PLANNER_HEADER_HEIGHT } from './sizes';
-import { MIDDLE } from './depths';
+import { PLANNER_BACKGROUND, PLANNER_BORDER } from '../constants/colors';
+import { APP_HEADER_HEIGHT, PLANNER_HEADER_HEIGHT } from '../constants/sizes';
+import { MIDDLE } from '../constants/depths';
 
 const Table = styled.table`
   border-collapse: collapse;
