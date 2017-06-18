@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import FormInput from '../components/FormInput';
-import FormButton from '../components/FormButton';
+import Button from '../components/Button';
 
 class PostEditor extends Component {
   render() {
@@ -22,7 +22,7 @@ class PostEditor extends Component {
           <FormInput label="Time" placeholder="Jun 5, 17:00" />
         </p>
         <p>
-          <FormButton>Save</FormButton>
+          <Button>Save</Button>
         </p>
       </form>
     );
