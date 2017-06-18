@@ -1,7 +1,13 @@
 import moment from 'moment';
+import { parseDate } from 'chrono-node';
 
 function getPosts() {
-  return localStorage.getItem('posts') || [];
+  const postsData = localStorage.getItem('posts');
+  return postsData ? JSON.parse(postsData) : [];
+}
+
+function setPosts(posts) {
+  localStorage.setItem('posts', JSON.stringify(posts));
 }
 
 export function getProviders() {
@@ -22,4 +28,14 @@ export function findPosts(provider, day) {
   return getPosts().filter(
     post => post.provider === provider && moment(post.date).isSame(day, 'day')
   );
+}
+
+export function addPost({ title, url, provider, when }) {
+  const post = {
+    title: title.trim(),
+    url: url.trim(),
+    provider: provider.trim(),
+    date: parseDate(when),
+  };
+  setPosts(getPosts().concat([post]));
 }

@@ -7,7 +7,7 @@ class PostEditor extends Component {
     title: '',
     url: '',
     provider: '',
-    time: '',
+    when: '',
   };
 
   render() {
@@ -48,12 +48,12 @@ class PostEditor extends Component {
         </p>
         <p>
           <label>
-            <b>Time</b>
+            <b>When</b>
             <TextInput
               placeholder="April 28, 17:00"
               tabIndex="4"
-              value={this.state.time}
-              onChange={this.handleTimeChange}
+              value={this.state.when}
+              onChange={this.handleWhenChange}
             />
           </label>
         </p>
@@ -81,8 +81,8 @@ class PostEditor extends Component {
     this.setState({ provider: e.target.value });
   };
 
-  handleTimeChange = e => {
-    this.setState({ time: e.target.value });
+  handleWhenChange = e => {
+    this.setState({ when: e.target.value });
   };
 }
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getProviders, getDays, findPosts } from '../services/posts';
+import { getProviders, getDays, findPosts, addPost } from '../services/posts';
 import PostEditor from '../components/PostEditor';
 import AppHeader from '../components/AppHeader';
 import AppHeaderButton from '../components/AppHeaderButton';
@@ -111,7 +111,7 @@ class App extends Component {
 
   handlePostEditorSubmit = post => {
     this.dismissOverlay();
-    console.log(post);
+    addPost(post);
   };
 }
 
