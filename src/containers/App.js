@@ -71,35 +71,49 @@ class App extends Component {
     );
   }
 
+  dismissOverlay() {
+    this.setState({ overlayedComponent: null });
+  }
+
+  presentAboutText() {
+    this.setState({ overlayedComponent: <AboutText /> });
+  }
+
+  presentPostEditor(post = null) {
+    this.setState({ overlayedComponent: <PostEditor post={post} /> });
+  }
+
   handleKeyDown = e => {
-    if (e.keyCode === 27) {
+    if (e.key === '?') {
+      this.presentAboutText();
+    }
+    if (e.key === 'a') {
+      this.presentPostEditor();
+    }
+    if (e.key === 'Escape') {
       this.dismissOverlay();
     }
   };
 
   handleAboutClick = e => {
     e.preventDefault();
-    this.setState({ overlayedComponent: <AboutText /> });
+    this.presentAboutText();
   };
 
   handleAddPostClick = e => {
     e.preventDefault();
-    this.setState({ overlayedComponent: <PostEditor /> });
+    this.presentPostEditor();
   };
 
   handlePostSelect = (e, post) => {
     e.preventDefault();
-    this.setState({ overlayedComponent: <PostEditor post={post} /> });
+    this.presentPostEditor(post);
   };
 
   handleOverlayDismiss = e => {
     e.preventDefault();
     this.dismissOverlay();
   };
-
-  dismissOverlay() {
-    this.setState({ overlayedComponent: null });
-  }
 }
 
 export default App;

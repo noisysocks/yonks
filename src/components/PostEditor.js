@@ -9,29 +9,35 @@ class PostEditor extends Component {
         <p>
           <label>
             <b>Title</b>
-            <TextInput placeholder="11 Photos You Won't Believe Are Real" />
+            <TextInput
+              placeholder="11 Photos You Won't Believe Are Real"
+              tabIndex="1"
+            />
           </label>
         </p>
         <p>
           <label>
             <b>URL</b>
-            <TextInput placeholder="http://example.com/11-photos-you-wont-believe-are-real" />
+            <TextInput
+              placeholder="http://example.com/11-photos-you-wont-believe-are-real"
+              tabIndex="2"
+            />
           </label>
         </p>
         <p>
           <label>
             <b>Provider</b>
-            <TextInput placeholder="Friendface" />
+            <TextInput placeholder="Friendface" tabIndex="3" />
           </label>
         </p>
         <p>
           <label>
             <b>Time</b>
-            <TextInput placeholder="April 28, 17:00" />
+            <TextInput placeholder="April 28, 17:00" tabIndex="4" />
           </label>
         </p>
         <p>
-          <Button>Save</Button>
+          <Button tabIndex="5">Save</Button>
         </p>
       </form>
     );
