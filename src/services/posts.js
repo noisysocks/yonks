@@ -1,8 +1,12 @@
 import moment from 'moment';
-import sampleData from '../sampleData';
+
+function getPosts() {
+  return localStorage.getItem('posts') || [];
+}
 
 export function getProviders() {
-  return [...new Set(sampleData.posts.map(post => post.provider))].sort();
+  const providers = getPosts().map(post => post.provider);
+  return [...new Set(providers)].sort();
 }
 
 export function getDays(offset = 0, limit = 15) {
@@ -10,7 +14,7 @@ export function getDays(offset = 0, limit = 15) {
 }
 
 export function findPosts(provider, day) {
-  return sampleData.posts.filter(
+  return getPosts().filter(
     post => post.provider === provider && moment(post.date).isSame(day, 'day')
   );
 }
