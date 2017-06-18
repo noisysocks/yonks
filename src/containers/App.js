@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import _, { range, filter } from 'lodash';
-import moment from 'moment';
-import sampleData from '../sampleData';
+import { getProviders, getDays, findPosts } from '../services/posts';
 import PostEditor from '../components/PostEditor';
 import AppHeader from '../components/AppHeader';
 import AppHeaderButton from '../components/AppHeaderButton';
@@ -15,22 +13,16 @@ class App extends Component {
   state = { providers: [], days: [] };
 
   componentDidMount() {
-    const providers = _(sampleData.posts).map('provider').uniq().value();
-    const days = range(15).map(n => moment().add(n, 'days'));
-    this.setState({ providers, days });
+    this.setState({
+      providers: getProviders(),
+      days: getDays(),
+    });
 
     document.addEventListener('keydown', this.handleKeyDown);
   }
 
   componentWillUnmount() {
     document.removeEventListener('keydown', this.handleKeyDown);
-  }
-
-  findPosts(provider, day) {
-    return filter(
-      sampleData.posts,
-      post => post.provider === provider && moment(post.date).isSame(day, 'day')
-    );
   }
 
   render() {
@@ -55,7 +47,7 @@ class App extends Component {
               {this.state.providers.map(provider =>
                 <PlannerCell
                   key={provider}
-                  posts={this.findPosts(provider, day)}
+                  posts={findPosts(provider, day)}
                   onPostSelect={this.handlePostSelect}
                 />
               )}
