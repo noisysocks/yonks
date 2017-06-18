@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import _, { range, filter } from 'lodash';
 import moment from 'moment';
 import sampleData from '../sampleData';
-import PostEditor from './PostEditor';
+import PostEditor from '../components/PostEditor';
 import AppHeader from '../components/AppHeader';
 import AppHeaderButton from '../components/AppHeaderButton';
 import PlannerTable from '../components/PlannerTable';

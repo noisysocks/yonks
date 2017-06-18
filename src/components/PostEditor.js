@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import TextInput from '../components/TextInput';
-import Button from '../components/Button';
+import TextInput from './TextInput';
+import Button from './Button';
 
 class PostEditor extends Component {
   render() {
