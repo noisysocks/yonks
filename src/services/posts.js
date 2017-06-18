@@ -6,7 +6,12 @@ function getPosts() {
 
 export function getProviders() {
   const providers = getPosts().map(post => post.provider);
-  return [...new Set(providers)].sort();
+  if (providers.length > 0) {
+    return [...new Set(providers)].sort();
+  } else {
+    // TODO: App should have a proper empty view
+    return [''];
+  }
 }
 
 export function getDays(offset = 0, limit = 15) {
