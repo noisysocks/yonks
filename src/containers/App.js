@@ -80,7 +80,11 @@ class App extends Component {
   }
 
   presentPostEditor(post = null) {
-    this.setState({ overlayedComponent: <PostEditor post={post} /> });
+    this.setState({
+      overlayedComponent: (
+        <PostEditor post={post} onSubmit={this.handlePostEditorSubmit} />
+      ),
+    });
   }
 
   handleKeyDown = e => {
@@ -113,6 +117,12 @@ class App extends Component {
   handleOverlayDismiss = e => {
     e.preventDefault();
     this.dismissOverlay();
+  };
+
+  handlePostEditorSubmit = (e, post) => {
+    e.preventDefault();
+    this.dismissOverlay();
+    console.log(post);
   };
 }
 
