@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import FormInput from '../components/FormInput';
+import TextInput from '../components/TextInput';
 import Button from '../components/Button';
 
 class PostEditor extends Component {
@@ -7,19 +7,28 @@ class PostEditor extends Component {
     return (
       <form>
         <p>
-          <FormInput label="Title" placeholder="10 Reasons To Live" />
+          <label>
+            <b>Title</b>
+            <TextInput placeholder="11 Photos You Won't Believe Are Real" />
+          </label>
         </p>
         <p>
-          <FormInput
-            label="URL"
-            placeholder="http://example.com/10-reasons-to-live"
-          />
+          <label>
+            <b>URL</b>
+            <TextInput placeholder="http://example.com/11-photos-you-wont-believe-are-real" />
+          </label>
         </p>
         <p>
-          <FormInput label="Provider" placeholder="Sharespot" />
+          <label>
+            <b>Provider</b>
+            <TextInput placeholder="Friendface" />
+          </label>
         </p>
         <p>
-          <FormInput label="Time" placeholder="Jun 5, 17:00" />
+          <label>
+            <b>Time</b>
+            <TextInput placeholder="April 28, 17:00" />
+          </label>
         </p>
         <p>
           <Button>Save</Button>
