@@ -33,7 +33,10 @@ function PlannerCell({ posts, onPostSelect }) {
             <Link
               href={`#post/${post.id}`}
               title={post.title}
-              onClick={e => onPostSelect(e, post)}
+              onClick={e => {
+                e.preventDefault();
+                onPostSelect(post);
+              }}
             >
               {post.title}
             </Link>

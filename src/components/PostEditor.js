@@ -65,7 +65,8 @@ class PostEditor extends Component {
   }
 
   handleSubmit = e => {
-    this.props.onSubmit(e, this.state);
+    e.preventDefault();
+    this.props.onSubmit(this.state);
   };
 
   handleTitleChange = e => {

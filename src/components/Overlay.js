@@ -28,7 +28,12 @@ const Sheet = styled.div`
 
 function Overlay({ onDismiss, children }) {
   return (
-    <Container onClick={onDismiss}>
+    <Container
+      onClick={e => {
+        e.preventDefault();
+        onDismiss();
+      }}
+    >
       <Sheet onClick={e => e.stopPropagation()}>
         {children}
       </Sheet>

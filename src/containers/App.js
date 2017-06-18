@@ -109,18 +109,15 @@ class App extends Component {
     this.presentPostEditor();
   };
 
-  handlePostSelect = (e, post) => {
-    e.preventDefault();
+  handlePostSelect = post => {
     this.presentPostEditor(post);
   };
 
-  handleOverlayDismiss = e => {
-    e.preventDefault();
+  handleOverlayDismiss = () => {
     this.dismissOverlay();
   };
 
-  handlePostEditorSubmit = (e, post) => {
-    e.preventDefault();
+  handlePostEditorSubmit = post => {
     this.dismissOverlay();
     console.log(post);
   };
