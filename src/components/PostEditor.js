@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 import PropTypes from 'prop-types';
 import TextInput from './TextInput';
 import Button from './Button';
 
 class PostEditor extends Component {
-  state = {
-    title: '',
-    url: '',
-    provider: '',
-    when: '',
-  };
+  constructor(props) {
+    super(props);
+
+    const post = props.post || {};
+    this.state = {
+      id: post.id || null,
+      title: post.title || '',
+      url: post.url || '',
+      provider: post.provider || '',
+      when: post.date ? moment(post.date).format('MMM D, H:mm') : '',
+    };
+  }
 
   render() {
     return (
@@ -88,6 +95,7 @@ class PostEditor extends Component {
 }
 
 PostEditor.propTypes = {
+  post: PropTypes.object,
   onSubmit: PropTypes.func.isRequired,
 };
 
