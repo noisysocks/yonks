@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { PLANNER_BORDER } from '../constants/colors';
 import { APP_HEADER_HEIGHT, PLANNER_HEADER_HEIGHT } from '../constants/sizes';
 
@@ -46,5 +47,10 @@ function PlannerCell({ posts, onPostSelect }) {
     </Cell>
   );
 }
+
+PlannerCell.propTypes = {
+  posts: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onPostSelect: PropTypes.func.isRequired,
+};
 
 export default PlannerCell;

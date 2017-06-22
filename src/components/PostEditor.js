@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import TextInput from './TextInput';
 import Button from './Button';
 
@@ -85,5 +86,9 @@ class PostEditor extends Component {
     this.setState({ when: e.target.value });
   };
 }
+
+PostEditor.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export default PostEditor;

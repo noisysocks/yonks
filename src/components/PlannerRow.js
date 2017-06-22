@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { PLANNER_BORDER } from '../constants/colors';
 
 const HeaderCell = styled.th`
@@ -18,5 +19,9 @@ function PlannerRow({ title, children }) {
     </tr>
   );
 }
+
+PlannerRow.propTypes = {
+  title: PropTypes.string.isRequired,
+};
 
 export default PlannerRow;

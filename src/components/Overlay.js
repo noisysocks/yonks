@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { TOP } from '../constants/depths';
 
 const Container = styled.div`
@@ -40,5 +41,9 @@ function Overlay({ onDismiss, children }) {
     </Container>
   );
 }
+
+Overlay.propTypes = {
+  onDismiss: PropTypes.func.isRequired,
+};
 
 export default Overlay;

@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import PropTypes from 'prop-types';
 import PlannerTable from '../components/PlannerTable';
 import PlannerRow from '../components/PlannerRow';
 import PlannerCell from '../components/PlannerCell';
@@ -25,5 +26,13 @@ function Planner({ data, onPostSelect }) {
     </PlannerTable>
   );
 }
+
+Planner.propTypes = {
+  data: PropTypes.shape({
+    providers: PropTypes.arrayOf(PropTypes.string).isRequired,
+    getPosts: PropTypes.func.isRequired,
+  }).isRequired,
+  onPostSelect: PropTypes.func.isRequired,
+};
 
 export default Planner;

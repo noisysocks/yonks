@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { PLANNER_BACKGROUND, PLANNER_BORDER } from '../constants/colors';
 import { APP_HEADER_HEIGHT, PLANNER_HEADER_HEIGHT } from '../constants/sizes';
 import { MIDDLE } from '../constants/depths';
@@ -60,5 +61,9 @@ function PlannerTable({ columns, children }) {
     </Table>
   );
 }
+
+PlannerTable.propTypes = {
+  columns: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
 
 export default PlannerTable;
