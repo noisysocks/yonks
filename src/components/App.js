@@ -1,23 +1,17 @@
 import React, { Component } from 'react';
-import { getProviders, getDays, findPosts, addPost } from '../services/posts';
-import PostEditor from '../components/PostEditor';
 import AppHeader from '../components/AppHeader';
 import AppHeaderButton from '../components/AppHeaderButton';
-import PlannerTable from '../components/PlannerTable';
-import PlannerRow from '../components/PlannerRow';
-import PlannerCell from '../components/PlannerCell';
+import Planner from '../containers/Planner';
 import Overlay from '../components/Overlay';
 import AboutText from '../components/AboutText';
+import PostEditor from '../containers/PostEditor';
 
 class App extends Component {
-  state = { providers: [], days: [] };
+  state = {
+    overlayedComponent: null,
+  };
 
   componentDidMount() {
-    this.setState({
-      providers: getProviders(),
-      days: getDays(),
-    });
-
     document.addEventListener('keydown', this.handleKeyDown);
   }
 
@@ -41,19 +35,7 @@ class App extends Component {
           />
         </AppHeader>
 
-        <PlannerTable columns={this.state.providers}>
-          {this.state.days.map(day =>
-            <PlannerRow key={day} title={day.format('ddd D')}>
-              {this.state.providers.map(provider =>
-                <PlannerCell
-                  key={provider}
-                  posts={findPosts(provider, day)}
-                  onPostSelect={this.handlePostSelect}
-                />
-              )}
-            </PlannerRow>
-          )}
-        </PlannerTable>
+        <Planner onPostSelect={this.handlePostSelect} />
 
         {this.state.overlayedComponent &&
           <Overlay onDismiss={this.handleOverlayDismiss}>
@@ -61,10 +43,6 @@ class App extends Component {
           </Overlay>}
       </div>
     );
-  }
-
-  dismissOverlay() {
-    this.setState({ overlayedComponent: null });
   }
 
   presentAboutText() {
@@ -77,6 +55,10 @@ class App extends Component {
         <PostEditor post={post} onSubmit={this.handlePostEditorSubmit} />
       ),
     });
+  }
+
+  dismissOverlay() {
+    this.setState({ overlayedComponent: null });
   }
 
   handleKeyDown = e => {
@@ -109,9 +91,8 @@ class App extends Component {
     this.dismissOverlay();
   };
 
-  handlePostEditorSubmit = post => {
+  handlePostEditorSubmit = () => {
     this.dismissOverlay();
-    addPost(post);
   };
 }
 

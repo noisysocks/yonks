@@ -29,7 +29,7 @@ function PlannerCell({ posts, onPostSelect }) {
     <Cell>
       <List>
         {posts.map(post =>
-          <li key={post.title}>
+          <li key={post.id}>
             <Link
               href={`#post/${post.id}`}
               title={post.title}
