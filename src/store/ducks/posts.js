@@ -1,3 +1,5 @@
+import { parseDate } from 'chrono-node';
+
 const SAVE = 'yonks/posts/SAVE';
 
 export default function reducer(state = {}, action) {
@@ -12,6 +14,15 @@ export default function reducer(state = {}, action) {
   }
 }
 
-export function savePost(post) {
-  return { type: SAVE, post };
+export function savePost({ title, url, provider, when }) {
+  return {
+    type: SAVE,
+    // TODO: Probably move this into a sanitizePost() helper
+    post: {
+      title: title.trim(),
+      url: url.trim(), // TODO: Add protocol if it doesn't exist
+      provider: provider.trim(),
+      date: parseDate(when),
+    },
+  };
 }
