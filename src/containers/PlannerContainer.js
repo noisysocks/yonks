@@ -1,11 +1,12 @@
 import moment from 'moment';
 import { connect } from 'react-redux';
 import Planner from '../components/Planner';
+import { unique } from '../helpers/array';
 
 function getPlatforms(state) {
   const platforms = Object.values(state.posts).map(post => post.platform);
   if (platforms.length > 0) {
-    return [...new Set(platforms)].sort();
+    return unique(platforms.sort());
   } else {
     // TODO: Planner should have a proper empty view
     return [''];
