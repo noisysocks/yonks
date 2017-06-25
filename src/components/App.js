@@ -25,13 +25,13 @@ class App extends Component {
         <AppHeader>
           <AppHeaderButton
             href="#about"
-            onClick={this.handleAboutClick}
             icon="question"
+            onClick={this.handleAboutClick}
           />
           <AppHeaderButton
             href="#add-post"
-            onClick={this.handleAddPostClick}
             icon="plus"
+            onClick={this.handleAddPostClick}
           />
         </AppHeader>
 

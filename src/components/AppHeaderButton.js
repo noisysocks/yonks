@@ -9,7 +9,7 @@ const Link = styled.a`
   margin-left: 20px;
 `;
 
-function AppHeaderButton({ href, onClick, icon }) {
+function AppHeaderButton({ href, icon, onClick }) {
   return (
     <Link href={href} onClick={onClick}><i className={`fa fa-${icon}`} /></Link>
   );
@@ -17,8 +17,8 @@ function AppHeaderButton({ href, onClick, icon }) {
 
 AppHeaderButton.propTypes = {
   href: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
   icon: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default AppHeaderButton;

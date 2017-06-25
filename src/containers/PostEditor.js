@@ -4,8 +4,8 @@ import { savePost } from '../store/ducks/posts';
 
 function mapDispatchToProps(dispatch, ownProps) {
   return {
-    onSubmit(post) {
-      dispatch(savePost(post));
+    onSubmit(postInfo) {
+      dispatch(savePost(postInfo));
       ownProps.onSubmit();
     },
   };
