@@ -11,13 +11,13 @@ function getDays(offset = 0, limit = 15) {
 
 function Planner({ data, onPostSelect }) {
   return (
-    <PlannerTable columns={data.providers}>
+    <PlannerTable columns={data.platforms}>
       {getDays().map(day =>
         <PlannerRow key={day} title={day.format('ddd D')}>
-          {data.providers.map(provider =>
+          {data.platforms.map(platform =>
             <PlannerCell
-              key={provider}
-              posts={data.getPosts(provider, day)}
+              key={platform}
+              posts={data.getPosts(platform, day)}
               onPostSelect={onPostSelect}
             />
           )}
@@ -29,7 +29,7 @@ function Planner({ data, onPostSelect }) {
 
 Planner.propTypes = {
   data: PropTypes.shape({
-    providers: PropTypes.arrayOf(PropTypes.string).isRequired,
+    platforms: PropTypes.arrayOf(PropTypes.string).isRequired,
     getPosts: PropTypes.func.isRequired,
   }).isRequired,
   onPostSelect: PropTypes.func.isRequired,

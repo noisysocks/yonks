@@ -14,7 +14,7 @@ export default function reducer(state = {}, action) {
   }
 }
 
-export function savePost({ id, title, url, provider, when }) {
+export function savePost({ id, title, url, platform, when }) {
   return {
     type: SAVE,
     // TODO: Probably move this into a sanitizePost() helper
@@ -22,7 +22,7 @@ export function savePost({ id, title, url, provider, when }) {
       id,
       title: title.trim(),
       url: url.trim(), // TODO: Add protocol if it doesn't exist
-      provider: provider.trim(),
+      platform: platform.trim(),
       date: parseDate(when),
     },
   };

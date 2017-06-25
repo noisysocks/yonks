@@ -13,7 +13,7 @@ class PostEditor extends Component {
       id: post.id || null,
       title: post.title || '',
       url: post.url || '',
-      provider: post.provider || '',
+      platform: post.platform || '',
       when: post.date ? moment(post.date).format('MMM D, H:mm') : '',
     };
   }
@@ -45,12 +45,12 @@ class PostEditor extends Component {
         </p>
         <p>
           <label>
-            <b>Provider</b>
+            <b>Platform</b>
             <TextInput
               placeholder="Friendface"
               tabIndex="3"
-              value={this.state.provider}
-              onChange={this.handleProviderChange}
+              value={this.state.platform}
+              onChange={this.handlePlatformChange}
             />
           </label>
         </p>
@@ -85,8 +85,8 @@ class PostEditor extends Component {
     this.setState({ url: e.target.value });
   };
 
-  handleProviderChange = e => {
-    this.setState({ provider: e.target.value });
+  handlePlatformChange = e => {
+    this.setState({ platform: e.target.value });
   };
 
   handleWhenChange = e => {
