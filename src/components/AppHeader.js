@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { HEADER_BACKGROUND, HEADER_TEXT } from '../constants/colors';
 import { APP_HEADER_HEIGHT } from '../constants/sizes';
+import { HEADER_BACKGROUND, HEADER_TEXT } from '../constants/colors';
 import { MIDDLE } from '../constants/depths';
 
 const Header = styled.header`

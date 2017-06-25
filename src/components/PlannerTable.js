@@ -1,9 +1,9 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import { PLANNER_BACKGROUND, PLANNER_BORDER } from '../constants/colors';
 import { APP_HEADER_HEIGHT, PLANNER_HEADER_HEIGHT } from '../constants/sizes';
 import { MIDDLE } from '../constants/depths';
+import { PLANNER_BACKGROUND, PLANNER_BORDER } from '../constants/colors';
 
 const Table = styled.table`
   border-collapse: collapse;

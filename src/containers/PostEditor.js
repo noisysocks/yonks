@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { savePost } from '../store/ducks/posts';
 import PostEditor from '../components/PostEditor';
+import { savePost } from '../store/ducks/posts';
 
 function mapDispatchToProps(dispatch, ownProps) {
   return {

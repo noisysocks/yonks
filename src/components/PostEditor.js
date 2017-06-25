@@ -1,8 +1,8 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import moment from 'moment';
-import PropTypes from 'prop-types';
-import TextInput from './TextInput';
 import Button from './Button';
+import TextInput from './TextInput';
 
 class PostEditor extends Component {
   constructor(props) {

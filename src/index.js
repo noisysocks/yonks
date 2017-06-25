@@ -1,8 +1,8 @@
 import React from 'react';
-import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import configureStore from './store/configureStore';
+import { render } from 'react-dom';
 import App from './components/App';
+import configureStore from './store/configureStore';
 import registerServiceWorker from './registerServiceWorker';
 import 'normalize.css';
 import 'font-awesome/css/font-awesome.css';

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import AboutText from '../components/AboutText';
 import AppHeader from '../components/AppHeader';
 import AppHeaderButton from '../components/AppHeaderButton';
-import Planner from '../containers/Planner';
 import Overlay from '../components/Overlay';
-import AboutText from '../components/AboutText';
+import Planner from '../containers/Planner';
 import PostEditor from '../containers/PostEditor';
 
 class App extends Component {
