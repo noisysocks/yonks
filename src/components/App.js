@@ -3,8 +3,8 @@ import AboutText from '../components/AboutText';
 import AppHeader from '../components/AppHeader';
 import AppHeaderButton from '../components/AppHeaderButton';
 import Overlay from '../components/Overlay';
-import Planner from '../containers/Planner';
-import PostEditor from '../containers/PostEditor';
+import PlannerContainer from '../containers/PlannerContainer';
+import PostEditorContainer from '../containers/PostEditorContainer';
 
 class App extends Component {
   state = {
@@ -35,7 +35,7 @@ class App extends Component {
           />
         </AppHeader>
 
-        <Planner onPostSelect={this.handlePostSelect} />
+        <PlannerContainer onPostSelect={this.handlePostSelect} />
 
         {this.state.overlayedComponent &&
           <Overlay onDismiss={this.handleOverlayDismiss}>
@@ -52,7 +52,10 @@ class App extends Component {
   presentPostEditor(post = null) {
     this.setState({
       overlayedComponent: (
-        <PostEditor post={post} onSubmit={this.handlePostEditorSubmit} />
+        <PostEditorContainer
+          post={post}
+          onSubmit={this.handlePostEditorSubmit}
+        />
       ),
     });
   }
