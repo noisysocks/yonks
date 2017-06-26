@@ -70,7 +70,11 @@ class PostEditor extends Component {
         <ButtonGroup>
           <Button tabIndex="5">Save</Button>
           {this.state.id &&
-            <LinkButton href="#" dangerous onClick={this.handleDeleteClick}>
+            <LinkButton
+              href={`#post/${this.state.id}/delete`}
+              dangerous
+              onClick={this.handleDeleteClick}
+            >
               Delete
             </LinkButton>}
         </ButtonGroup>
