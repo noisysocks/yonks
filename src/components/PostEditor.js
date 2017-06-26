@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import moment from 'moment';
 import Button from './Button';
+import ButtonGroup from './ButtonGroup';
+import LinkButton from './LinkButton';
 import TextInput from './TextInput';
 
 class PostEditor extends Component {
@@ -65,9 +67,13 @@ class PostEditor extends Component {
             />
           </label>
         </p>
-        <p>
+        <ButtonGroup>
           <Button tabIndex="5">Save</Button>
-        </p>
+          {this.state.id &&
+            <LinkButton href="#" dangerous onClick={this.handleDeleteClick}>
+              Delete
+            </LinkButton>}
+        </ButtonGroup>
       </form>
     );
   }
@@ -92,11 +98,17 @@ class PostEditor extends Component {
   handleWhenChange = e => {
     this.setState({ when: e.target.value });
   };
+
+  handleDeleteClick = e => {
+    e.preventDefault();
+    this.props.onDelete(this.state.id);
+  };
 }
 
 PostEditor.propTypes = {
   post: PropTypes.object,
   onSubmit: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default PostEditor;
