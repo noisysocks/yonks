@@ -30,6 +30,7 @@ class PostEditor extends Component {
               placeholder="11 Photos You Won't Believe Are Real"
               tabIndex="1"
               value={this.state.title}
+              required
               onChange={this.handleTitleChange}
             />
           </label>
@@ -41,6 +42,7 @@ class PostEditor extends Component {
               placeholder="http://example.com/11-photos-you-wont-believe-are-real"
               tabIndex="2"
               value={this.state.url}
+              required
               onChange={this.handleUrlChange}
             />
           </label>
@@ -52,6 +54,7 @@ class PostEditor extends Component {
               placeholder="Friendface"
               tabIndex="3"
               value={this.state.platform}
+              required
               onChange={this.handlePlatformChange}
             />
           </label>
@@ -63,6 +66,7 @@ class PostEditor extends Component {
               placeholder="April 28, 17:00"
               tabIndex="4"
               value={this.state.when}
+              required
               onChange={this.handleWhenChange}
             />
           </label>
@@ -84,7 +88,13 @@ class PostEditor extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.onSubmit(this.state);
+
+    const { title, url, platform, when } = this.state;
+    if ([title, url, platform, when].every(field => field.trim())) {
+      this.props.onSubmit(this.state);
+    } else {
+      alert('Please fill out all fields.');
+    }
   };
 
   handleTitleChange = e => {
