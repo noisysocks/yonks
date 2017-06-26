@@ -4,7 +4,10 @@ import Planner from '../components/Planner';
 import { unique } from '../helpers/array';
 
 function getPlatforms(state) {
-  const platforms = Object.values(state.posts).map(post => post.platform);
+  const platforms = Object.values(state.posts)
+    .filter(post => moment(post.date).isSameOrAfter())
+    .map(post => post.platform);
+
   if (platforms.length > 0) {
     return unique(platforms.sort());
   } else {
