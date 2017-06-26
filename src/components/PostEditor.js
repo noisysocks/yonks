@@ -20,6 +20,12 @@ class PostEditor extends Component {
     };
   }
 
+  componentDidMount() {
+    if (!this.state.title) {
+      this.titleInput.focus();
+    }
+  }
+
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
@@ -27,6 +33,7 @@ class PostEditor extends Component {
           <label>
             <b>Title</b>
             <TextInput
+              innerRef={input => (this.titleInput = input)}
               placeholder="11 Photos You Won't Believe Are Real"
               tabIndex="1"
               value={this.state.title}

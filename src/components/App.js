@@ -65,13 +65,19 @@ class App extends Component {
   }
 
   handleKeyDown = e => {
-    if (e.key === '?') {
-      this.presentAboutText();
+    if (document.activeElement === document.body) {
+      if (e.key === '?') {
+        e.preventDefault();
+        this.presentAboutText();
+      }
+      if (e.key === 'a') {
+        e.preventDefault();
+        this.presentPostEditor();
+      }
     }
-    if (e.key === 'a') {
-      this.presentPostEditor();
-    }
+
     if (e.key === 'Escape') {
+      e.preventDefault();
       this.dismissOverlay();
     }
   };
