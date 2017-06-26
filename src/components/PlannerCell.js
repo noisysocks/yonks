@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import moment from 'moment';
 import styled from 'styled-components';
 import { APP_HEADER_HEIGHT, PLANNER_HEADER_HEIGHT } from '../constants/sizes';
 import { PLANNER_BORDER } from '../constants/colors';
@@ -39,6 +40,8 @@ function PlannerCell({ posts, onPostSelect }) {
                 onPostSelect(post);
               }}
             >
+              <b>{moment(post.date).format('H:mm')}</b>
+              &nbsp;
               {post.title}
             </Link>
           </li>
