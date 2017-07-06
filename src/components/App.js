@@ -70,7 +70,7 @@ class App extends Component {
         e.preventDefault();
         this.presentAboutText();
       }
-      if (e.key === 'a') {
+      if (e.key === 'a' || e.key === 'n') {
         e.preventDefault();
         this.presentPostEditor();
       }
