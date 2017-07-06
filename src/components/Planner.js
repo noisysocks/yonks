@@ -1,30 +1,64 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { Component } from 'react';
 import moment from 'moment';
 import PlannerCell from '../components/PlannerCell';
 import PlannerRow from '../components/PlannerRow';
 import PlannerTable from '../components/PlannerTable';
 
-function getDays(offset = 0, limit = 15) {
-  return [...Array(limit).keys()].map(n => moment().add(offset + n, 'days'));
-}
+// How many days to load per pagination
+const PAGE_SIZE = 14;
 
-function Planner({ data, onPostSelect }) {
-  return (
-    <PlannerTable columns={data.platforms}>
-      {getDays().map(day =>
-        <PlannerRow key={day} title={day.format('ddd D')}>
-          {data.platforms.map(platform =>
-            <PlannerCell
-              key={platform}
-              posts={data.getPosts(platform, day)}
-              onPostSelect={onPostSelect}
-            />
-          )}
-        </PlannerRow>
-      )}
-    </PlannerTable>
-  );
+// How far down the page (%) triggers a new pagination
+const PAGE_SCROLL_PERCENT = 0.8;
+
+class Planner extends Component {
+  state = {
+    numDays: PAGE_SIZE,
+  };
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  render() {
+    return (
+      <PlannerTable columns={this.props.data.platforms}>
+        {/* TODO: Ghost off-screen elements to reduce memory usage */}
+        {this.getDays().map(day =>
+          <PlannerRow key={day} title={day.format('ddd D')}>
+            {this.props.data.platforms.map(platform =>
+              <PlannerCell
+                key={platform}
+                posts={this.props.data.getPosts(platform, day)}
+                onPostSelect={this.props.onPostSelect}
+              />
+            )}
+          </PlannerRow>
+        )}
+      </PlannerTable>
+    );
+  }
+
+  getDays() {
+    const days = [];
+    for (let i = 0; i < this.state.numDays; i++) {
+      days.push(moment().add(i, 'days'));
+    }
+    return days;
+  }
+
+  handleScroll = e => {
+    const windowBottomY = window.innerHeight + window.scrollY;
+    const documentHeight = document.body.offsetHeight;
+
+    if (windowBottomY >= documentHeight * PAGE_SCROLL_PERCENT) {
+      this.setState({ numDays: this.state.numDays + PAGE_SIZE });
+    }
+  };
 }
 
 Planner.propTypes = {
