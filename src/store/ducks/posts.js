@@ -7,7 +7,7 @@ const DELETE = 'yonks/posts/DELETE';
 export default function reducer(state = {}, action) {
   switch (action.type) {
     case SAVE:
-      const id = action.post.id || Object.keys(state).length + 1;
+      const id = action.post.id || nextId(state);
       const post = { ...action.post, id };
       return { ...state, [id]: post };
 
@@ -18,6 +18,15 @@ export default function reducer(state = {}, action) {
 
     default:
       return state;
+  }
+}
+
+function nextId(state) {
+  const ids = Object.keys(state);
+  if (ids.length === 0) {
+    return 1;
+  } else {
+    return Math.max(...ids) + 1;
   }
 }
 
